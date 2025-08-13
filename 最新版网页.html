@@ -1,0 +1,1176 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinclairrrr‘s World - Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pixelRed: '#D72638',
+                        pixelWhite: '#F4F0E8',
+                        pixelBlack: '#222222',
+                        pixelBeige: '#F8F4E9',
+                        pixelGreen: '#4CAF50',
+                        pixelBlue: '#2196F3',
+                        pixelYellow: '#FFC107',
+                        pixelPurple: '#9C27B0',
+                        pixelBrown: '#8B4513',
+                        pixelGray: '#808080',
+                        pixelPink: '#FF69B4',
+                        pixelLightBlue: '#87CEFA',
+                        pixelLightGreen: '#98FB98',
+                        pixelOrange: '#FFA500',
+                        highlightBlue: '#356C8D' // 保持原有配置不变
+                    },
+                    fontFamily: {
+                        pixel: ['"Press Start 2P"', 'monospace', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .pixel-border {
+                box-shadow: 0 -4px 0 4px theme('colors.pixelBlack'), 
+                            4px 0 0 4px theme('colors.pixelBlack'), 
+                            0 4px 0 4px theme('colors.pixelBlack'), 
+                            -4px 0 0 4px theme('colors.pixelBlack');
+            }
+            .pixel-button {
+                position: relative;
+                transition: transform 0.1s ease;
+            }
+            .pixel-button::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                right: -4px;
+                width: 100%;
+                height: 100%;
+                background-color: theme('colors.pixelBlack');
+                z-index: -1;
+            }
+            .pixel-button:hover {
+                transform: translate(2px, 2px);
+            }
+            .pixel-button:hover::after {
+                transform: translate(-2px, -2px);
+            }
+            .pixel-icon {
+                image-rendering: pixelated;
+                image-rendering: -moz-crisp-edges;
+                image-rendering: crisp-edges;
+            }
+            .pixel-text {
+                text-shadow: 2px 2px 0 theme('colors.pixelBlack');
+            }
+            .snowflake {
+                position: absolute;
+                color: theme('colors.pixelWhite');
+                animation: fall linear infinite;
+            }
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh);
+                }
+            }
+            .pixel-card {
+                transition: all 0.2s ease;
+            }
+            .pixel-card:hover {
+                transform: scale(1.05);
+            }
+            .home-icon-container {
+                transition: transform 0.3s ease;
+            }
+            .home-icon-container:hover {
+                transform: scale(1.1);
+            }
+            /* 添加闪烁动画 */
+            @keyframes pulse-highlight {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.7; }
+            }
+            .highlight-text {
+                color: #FFB057; /* 仅修改此处颜色为#FFB057 */
+                animation: pulse-highlight 2s infinite;
+                font-weight: bold;
+            }
+            /* 文件夹样式 */
+            .pixel-folder {
+                position: relative;
+                width: 64px;
+                height: 48px;
+                transition: transform 0.2s ease;
+                cursor: pointer;
+            }
+            .pixel-folder:hover {
+                transform: scale(1.1);
+            }
+            .folder-body {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 75%;
+                background-color: var(--folder-color);
+                border: 4px solid theme('colors.pixelBlack');
+                border-radius: 0 4px 4px 4px;
+            }
+            .folder-tab {
+                position: absolute;
+                top: -4px;
+                width: 40%;
+                height: 25%;
+                background-color: var(--folder-color);
+                border: 4px solid theme('colors.pixelBlack');
+                border-bottom: none;
+                border-radius: 4px 4px 0 0;
+            }
+        }
+    </style>
+    
+    <!-- 像素字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-pixelBeige font-pixel text-pixelBlack min-h-screen overflow-x-hidden">
+    <!-- 页面容器 -->
+    <div id="page-container" class="relative">
+        <!-- 首页 -->
+        <div id="homepage" class="page active min-h-screen flex flex-col items-center justify-center p-4">
+            <!-- 像素风格装饰元素 - 预留图片位置 -->
+            <div class="absolute top-10 left-10 hidden md:block">
+                <!-- 替换为DOTOWN图片 1 -->
+                <div class="w-16 h-16 bg-pixelRed pixel-border flex items-center justify-center">
+                    <!-- 此处替换为你的DOTOWN图片1路径 -->
+                            <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/event_snowman_01.png" alt="雪人" class="w-full h-full object-contain pixel-icon">
+                </div>
+            </div>
+            <div class="absolute top-20 right-10 hidden md:block">
+                <!-- 替换为DOTOWN图片 2 -->
+                <div class="w-12 h-12 bg-pixelBlue pixel-border flex items-center justify-center">
+                    <!-- 此处替换为你的DOTOWN图片2路径 -->
+                     <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/sports_bicycle_02.png" alt="骑自行车" class="w-full h-full object-contain pixel-icon">
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-1/4 hidden md:block">
+                <!-- 替换为DOTOWN图片 3 -->
+                <div class="w-10 h-10 bg-pixelGreen pixel-border flex items-center justify-center">
+                    <!-- 此处替换为你的DOTOWN图片3路径 -->
+                    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/03/guest_rabbit_01.png" alt="兔子" class="w-full h-full object-contain pixel-icon">
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-1/4 hidden md:block">
+                <!-- 替换为DOTOWN图片 4 -->
+                <div class="w-14 h-14 bg-pixelYellow pixel-border flex items-center justify-center">
+                    <!-- 此处替换为你的DOTOWN图片4路径 -->
+                    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/food_grape_01.png" alt="葡萄" class="w-full h-full object-contain pixel-icon">
+                </div>
+            </div>
+            
+            <div class="text-center mb-12 relative z-10">
+                <h1 class="text-3xl md:text-5xl text-pixelRed pixel-text mb-8 animate-pulse">Sinclairrrr‘s World</h1>
+                
+                <!-- 主页图标和入口 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10">
+                    <!-- About Me 入口 -->
+                    <div class="home-icon-container">
+                        <div class="w-32 h-32 bg-pixelWhite pixel-border mx-auto flex items-center justify-center mb-4 cursor-pointer" onclick="navigateTo('about')">
+                            <!-- 替换为你的About Me DOTOWN图片 -->
+                            <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/person_city_girl_01.png" alt="城市女孩像素图，代表关于我" class="w-full h-full object-contain pixel-icon">
+                        </div>
+                        <button class="pixel-button bg-pixelRed text-pixelWhite px-6 py-3 text-sm sm:text-base" onclick="navigateTo('about')">About Me</button>
+                    </div>
+                    
+                    <!-- Portfolio 入口 -->
+                    <div class="home-icon-container">
+                        <div class="w-32 h-32 bg-pixelWhite pixel-border mx-auto flex items-center justify-center mb-4 cursor-pointer" onclick="navigateTo('portfolio')">
+                            <!-- 替换为你的Portfolio DOTOWN图片 -->
+                            <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/05/other_filebox_01.png" alt="文件盒像素图，代表作品集" class="w-full h-full object-contain pixel-icon">
+                        </div>
+                        <button class="pixel-button bg-pixelRed text-pixelWhite px-6 py-3 text-sm sm:text-base" onclick="navigateTo('portfolio')">Portfolio</button>
+                    </div>
+                    
+                    <!-- Hobbies 入口 - 使用提供的DOTOWN图片 -->
+                    <div class="home-icon-container">
+                        <div class="w-32 h-32 bg-pixelWhite pixel-border mx-auto flex items-center justify-center mb-4 cursor-pointer" onclick="navigateTo('hobbies')">
+                            <!-- 使用提供的DOTOWN游戏手柄图片 -->
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/73cbdf5288d54244a0cba9f1971e35e8~tplv-a9rns2rl98-image.image?rcl=202508120015024144D2481BC109E0F4D1&amp;rk3s=8e244e95&amp;rrcfp=e75484ac&amp;x-expires=1755533702&amp;x-signature=lNY8MqOn5qK7fY4Lo0np3PkNgTg%3D" alt="游戏手柄像素图，代表兴趣爱好" class="w-full h-full object-contain pixel-icon">
+                        </div>
+                        <button class="pixel-button bg-pixelRed text-pixelWhite px-6 py-3 text-sm sm:text-base" onclick="navigateTo('hobbies')">Hobbies</button>
+                    </div>
+                </div>
+                
+                <p class="text-lg md:text-xl text-pixelBlack">Welcome to my pixel world! Click to explore</p>
+            </div>
+        </div>
+        
+        <!-- About Me 页面 - 完全符合整体像素风格 -->
+        <div id="about" class="page hidden min-h-screen p-6 relative">
+            <!-- 顶部装饰条 -->
+            <div class="w-full h-12 bg-pixelRed mb-8 relative overflow-hidden">
+                <div class="snowflakes"></div>
+            </div>
+            
+            <!-- 返回按钮 -->
+            <button class="pixel-button bg-pixelBlack text-pixelWhite px-4 py-2 mb-8" onclick="navigateTo('homepage')">
+                <i class="fa fa-arrow-left mr-2"></i> Back
+            </button>
+            
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl text-pixelRed pixel-text mb-8 text-center">About Me</h2>
+                
+                <!-- 简介框 -->
+                <div class="bg-pixelWhite p-6 md:p-8 pixel-border mb-8">
+                    <p class="mb-6 leading-relaxed">Hello! I'm Sinclair Lin, a creative content professional blending retro pixel aesthetics with modern communication skills. Passionate about turning ideas into engaging stories, I bridge journalism, content operations, and multimedia production – always curious to merge the old-school charm with new-age creativity.</p>
+                </div>
+                
+                <!-- 教育经历和工作经验 -->
+                <h2 class="text-2xl text-pixelRed pixel-text mb-6 text-center">Education &amp; Experience</h2>
+                <div class="bg-pixelWhite p-6 md:p-8 pixel-border mb-8">
+                    <ul class="space-y-6">
+                        <li class="flex">
+                            <div class="mr-4 mt-1">
+                                <div class="w-8 h-8 bg-pixelRed rounded-full flex items-center justify-center p-1">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/town_school_01.png" 
+         alt="学校建筑图标" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                            </div>
+                            <div>
+                                <p class="font-bold">2023.9 - 2025.6</p>
+                                <p>Nanchang University (211)</p>
+                                <p>MA in Journalism &amp; Communication</p>
+                                <p>GPA: 3.59/4.0 <span class="highlight-text">(Rank 6/40)</span></p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="mr-4 mt-1">
+                               <div class="w-8 h-8 bg-pixelRed rounded-full flex items-center justify-center p-1">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/town_school_01.png" 
+         alt="学校建筑图标" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                            </div>
+                            <div>
+                                <p class="font-bold">2018.9 - 2022.6</p>
+                                <p>Guangdong University of Foreign Studies</p>
+                                <p>BA in Chinese (Creative Writing)</p>
+                                <p>GPA: 3.73/4.0</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="mr-4 mt-1">
+                                <div class="w-8 h-8 bg-pixelBlue rounded-full flex items-center justify-center p-1">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2023/12/give_tape_01.png" 
+         alt="胶带图标" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                            </div>
+                            <div>
+                                <p class="font-bold">2024.9 - 2024.11</p>
+                                <p>Sound Ventures Media</p>
+                                <p>Podcast Content Intern</p>
+                                <p class="highlight-text">60+ hot-tech articles, 2 viral shows (12w+ views)</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="mr-4 mt-1">
+                                <div class="w-8 h-8 bg-pixelBlue rounded-full flex items-center justify-center p-1">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2023/12/give_tape_01.png" 
+         alt="胶带图标" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                            </div>
+                            <div>
+                                <p class="font-bold">2020.7 - 2021.5</p>
+                                <p>China Youth Media (GD)</p>
+                                <p>Converged Media Editor</p>
+                                <p class="highlight-text">20+ articles (1.6w+ views) &amp; "Excellent Reporter" award</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="mr-4 mt-1">
+                               <div class="w-8 h-8 bg-pixelBlue rounded-full flex items-center justify-center p-1">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2023/12/give_tape_01.png" 
+         alt="胶带图标" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                            </div>
+                            <div>
+                                <p class="font-bold">2022.1 - 2022.4</p>
+                                <p>Yangcheng Evening News</p>
+                                <p>Education/Health Intern</p>
+                                <p>20+ medical articles &amp; on-site coverage</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 技能徽章 -->
+                <h2 class="text-2xl text-pixelRed pixel-text mb-6 text-center">Skill Badges</h2>
+                <div class="bg-pixelWhite p-6 md:p-8 pixel-border">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-pixelBlack rounded-full flex items-center justify-center mx-auto mb-4">
+                               <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/05/other_book_04.png" 
+     alt="书籍图标，代表写作技能" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <p>Writing</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-pixelBlack rounded-full flex items-center justify-center mx-auto mb-4">
+                                <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/other_painting_04.png" 
+     alt="画，代表设计" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <p>Canva/PS</p>
+                        </div>
+                        <div class="text-center">
+                           <div class="w-16 h-16 bg-pixelBlack rounded-full flex items-center justify-center mx-auto mb-4">
+                                 <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/maede_unit_web_01.png" 
+     alt="电脑，代表AI" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <p>ChatGPT/Cursor</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-pixelBlack rounded-full flex items-center justify-center mx-auto mb-4">
+                               <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/other_television_01.png" 
+     alt="电视，代表剪辑" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <p>CapCut</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-pixelBlack rounded-full flex items-center justify-center mx-auto mb-4">
+                                                               <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/07/other_speaker_01.png" 
+     alt="喇叭，代表语言" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <p>Eng(CET-6 612)/Mandarin</p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Portfolio 页面 - 修改后的布局 -->
+        <div id="portfolio" class="page hidden min-h-screen p-6">
+            <!-- 返回按钮 -->
+            <button class="pixel-button bg-pixelBlack text-pixelWhite px-4 py-2 mb-8" onclick="navigateTo('homepage')">
+                <i class="fa fa-arrow-left mr-2"></i> Back
+            </button>
+            
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl text-pixelRed pixel-text mb-10 text-center">Portfolio</h2>
+                
+                <!-- 像素网格背景 -->
+                <div class="relative">
+                    <div class="absolute inset-0 opacity-10 z-0">
+                        <div class="grid grid-cols-8 grid-rows-8 h-full">
+                            <div class="border border-pixelBlack"></div>
+                            <div class="border border-pixelBlack bg-pixelRed"></div>
+                            <div class="border border-pixelBlack"></div>
+                            <div class="border border-pixelBlack bg-pixelRed"></div>
+                            <div class="border border-pixelBlack"></div>
+                            <div class="border border-pixelBlack bg-pixelRed"></div>
+                            <div class="border border-pixelBlack"></div>
+                            <div class="border border-pixelBlack bg-pixelRed"></div>
+                            <div class="border border-pixelBlack bg-pixelRed"></div>
+                            <div class="border border-pixelBlack"></div>
+                            <div class="border border-pixelBlack bg-pixelRed"></div>
+                            <div class="border border-pixelBlack"></div>
+                            <div class="border border-pixelBlack bg-pixelRed"></div>
+                            <div class="border border-pixelBlack"></div>
+                            <div class="border border-pixelBlack bg-pixelRed"></div>
+                            <div class="border border-pixelBlack"></div>
+                            <!-- 重复像素模式 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 作品卡片 - 精简为3个项目 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 z-10 relative">
+                        <!-- 作品 1: Xiaoyuzhou FM -->
+                        <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                            <div class="w-full h-48 mb-4 bg-pixelBlack flex items-center justify-center">
+                                <!-- 小宇宙FM像素图标 -->
+                                <div class="w-32 h-32 flex items-center justify-center">
+                                    <div class="w-24 h-24 bg-pixelPurple rounded-full flex items-center justify-center">
+                                        <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/other_ufo_01.png" alt="UFO" class="w-full h-full object-contain pixel-icon">
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="text-xl mb-2">Xiaoyuzhou FM</h3>
+                            <p class="text-sm mb-4">Sheng Espresso, a deep-dive podcast exploring tech innovations and business trends.</p>
+                            <button class="pixel-button bg-pixelRed text-pixelWhite px-3 py-1 text-xs w-full" onclick="showProjectDetails('xiaoyuzhou-fm')">View Details</button>
+                        </div>
+                        
+                        <!-- 作品 2: China Youth Media -->
+                        <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                            <div class="w-full h-48 mb-4 bg-pixelBlack flex items-center justify-center">
+                                <!-- 中国青年媒体像素图标 -->
+                                <div class="w-32 h-32 flex items-center justify-center">
+                                    <div class="w-24 h-24 bg-pixelBlue rounded-full flex items-center justify-center">
+                                        <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/person_kindergarten_children_02.png" alt="制服学校" class="w-full h-full object-contain pixel-icon">
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="text-xl mb-2">China Youth Media</h3>
+                            <p class="text-sm mb-4">Youth-focused media platform covering campus and social issues.</p>
+                            <button class="pixel-button bg-pixelRed text-pixelWhite px-3 py-1 text-xs w-full" onclick="showProjectDetails('china-youth-media')">View Details</button>
+                        </div>
+                        
+                        <!-- 作品 3: Yangcheng Evening News -->
+                        <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                            <div class="w-full h-48 mb-4 bg-pixelBlack flex items-center justify-center">
+                                <!-- 羊城晚报像素图标 -->
+                                <div class="w-32 h-32 flex items-center justify-center">
+                                    <div class="w-24 h-24 bg-pixelOrange rounded-full flex items-center justify-center">
+                                       <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/thing_sheep_01.png" alt="绵羊图标" class="w-full h-full object-contain pixel-icon">
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="text-xl mb-2">Yangcheng Evening News</h3>
+                            <p class="text-sm mb-4">Established news outlet covering local and national news.</p>
+                            <button class="pixel-button bg-pixelRed text-pixelWhite px-3 py-1 text-xs w-full" onclick="showProjectDetails('yangcheng-evening-news')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 作品详情模态框 - 文件夹风格 -->
+            <div id="project-modal" class="fixed inset-0 bg-pixelBlack bg-opacity-80 flex items-center justify-center z-50 hidden">
+                <div class="bg-pixelWhite max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 pixel-border relative">
+                    <button class="absolute top-4 right-4 text-pixelBlack text-xl" onclick="hideProjectDetails()">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <div id="project-details-content" class="mt-6">
+                        <!-- 内容将通过JavaScript动态填充 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hobbies 页面 -->
+        <div id="hobbies" class="page hidden min-h-screen p-6 relative">
+            <!-- 顶部装饰 -->
+            <div class="w-full h-16 mb-8 relative">
+                <div class="absolute inset-0 flex justify-around items-center">
+                    <div class="w-10 h-10 bg-pixelRed rounded-full flex items-center justify-center">
+                        <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/person_bboy_02.png" alt="Kpop" class="w-full h-full object-contain pixel-icon">
+                    </div>
+                    <div class="w-10 h-10 bg-pixelBlue rounded-full flex items-center justify-center">
+                        <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/food_plain_bread_01.png" alt="面包" class="w-full h-full object-contain pixel-icon">
+                    </div>
+                    <div class="w-10 h-10 bg-pixelGreen rounded-full flex items-center justify-center">
+                        <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/person_ghost_01.png" alt="鬼怪" class="w-full h-full object-contain pixel-icon">
+                    </div>
+                    <div class="w-10 h-10 bg-pixelYellow rounded-full flex items-center justify-center">
+                        <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/food_ramen_01.png" alt="拉面" class="w-full h-full object-contain pixel-icon">
+                    </div>
+                    <div class="w-10 h-10 bg-pixelPurple rounded-full flex items-center justify-center">
+                        <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/thing_tiger_02.png" alt="老虎" class="w-full h-full object-contain pixel-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 返回按钮 -->
+            <button class="pixel-button bg-pixelBlack text-pixelWhite px-4 py-2 mb-8" onclick="navigateTo('homepage')">
+                <i class="fa fa-arrow-left mr-2"></i> Back
+            </button>
+            
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl text-pixelRed pixel-text mb-12 text-center">My Hobbies</h2>
+                
+                <!-- 像素化多彩背景 -->
+                <div class="relative bg-pixelWhite p-8 pixel-border mb-8">
+                    <div class="absolute inset-0 opacity-5 z-0">
+                        <div class="grid grid-cols-16 grid-rows-16 h-full">
+                            <div class="col-span-2 row-span-2 bg-pixelRed"></div>
+                            <div class="col-span-2 row-span-2 bg-pixelBlue col-start-5"></div>
+                            <div class="col-span-2 row-span-2 bg-pixelGreen col-start-9"></div>
+                            <div class="col-span-2 row-span-2 bg-pixelYellow col-start-13"></div>
+                            <div class="col-span-2 row-span-2 bg-pixelPurple row-start-3"></div>
+                            <!-- 重复像素模式 -->
+                        </div>
+                    </div>
+                    
+                    <p class="text-center mb-10 relative z-10">Beyond creating pixel art, I have a variety of interests that keep me inspired and entertained. Click on any of the icons below to learn more!</p>
+                    
+                    <!-- 兴趣子入口 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 relative z-10">
+                        <!-- KPop -->
+                        <div class="pixel-card bg-pixelWhite p-6 pixel-border text-center cursor-pointer" onclick="navigateTo('kpop')">
+                          <div class="w-24 h-24 flex items-center justify-center mx-auto mb-4"> 
+<img src="https://dotown.maeda-design-room.net/wp-content/uploads/2024/09/town_kyoceramicdome_01.png" 
+     alt="巨蛋" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <h3 class="text-2xl text-pixelRed">K-pop</h3>
+                        </div>
+                        
+                        <!-- Reading -->
+                        <div class="pixel-card bg-pixelWhite p-6 pixel-border text-center cursor-pointer" onclick="navigateTo('reading')">
+                            <div class="w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                                <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/05/other_book.png" 
+     alt="书" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <h3 class="text-2xl text-pixelBlue">Reading</h3>
+                        </div>
+                        
+                        <!-- Movie-watching -->
+                        <div class="pixel-card bg-pixelWhite p-6 pixel-border text-center cursor-pointer" onclick="navigateTo('movies')">
+                            <div class="w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                                <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/07/other_ticket_01.png" 
+     alt="票" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <h3 class="text-2xl text-pixelGreen">Movies</h3>
+                        </div>
+                        
+                        <!-- Traveling -->
+                        <div class="pixel-card bg-pixelWhite p-6 pixel-border text-center cursor-pointer" onclick="navigateTo('traveling')">
+                            <div class="w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                               <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2024/09/vehicle_plane_01.png" 
+     alt="飞机" 
+     class="w-full h-full object-contain pixel-icon">
+                            </div>
+                            <h3 class="text-2xl text-pixelYellow">Traveling</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- K-pop 页面 -->
+        <div id="kpop" class="page hidden min-h-screen p-6">
+            <!-- 返回按钮 -->
+            <button class="pixel-button bg-pixelBlack text-pixelWhite px-4 py-2 mb-8" onclick="navigateTo('hobbies')">
+                <i class="fa fa-arrow-left mr-2"></i> Back to Hobbies
+            </button>
+            
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl text-pixelRed pixel-text mb-8 text-center">K-pop</h2>
+                
+                <!-- 像素化舞台背景 -->
+                <div class="relative bg-pixelBlack p-6 mb-8">
+                    <div class="absolute inset-0 opacity-30">
+                        <div class="grid grid-cols-20 grid-rows-10 h-full">
+                            <div class="col-span-1 row-span-1 bg-pixelRed col-start-2 row-start-3"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelRed col-start-4 row-start-2"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelRed col-start-6 row-start-4"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelRed col-start-8 row-start-2"></div>
+                            <!-- 右侧重复 -->
+                            <div class="col-span-1 row-span-1 bg-pixelRed col-start-13 row-start-3"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelRed col-start-15 row-start-2"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelRed col-start-17 row-start-4"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelRed col-start-19 row-start-2"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative z-10 text-pixelWhite">
+                        <p class="mb-6">I'm a huge K-pop fan! The music, dance, fashion, and overall production value never fail to impress me. It's not just entertainment, but a form of art that combines multiple disciplines.</p>
+                        
+                        <h3 class="text-2xl mb-4 text-pixelRed">Favorite Groups</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-pixelBlack bg-opacity-50 p-4 pixel-border border-pixelRed">
+                                <h4 class="text-xl mb-2">G-Dragon</h4>
+                                <p>His music evolution and global impact are inspiring. From "BULLSHIT" to "HOME SWEET HOME"， their journey has been incredible.</p>
+                            </div>
+                            <div class="bg-pixelBlack bg-opacity-50 p-4 pixel-border border-pixelBlue">
+                                <h4 class="text-xl mb-2">D&E</h4>
+                                <p>Electrifying dance moves, flawless synchronization, and explosive stage presence. Their performances redefine K-pop energy and ...love.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 像素化音乐播放器 -->
+                        <div class="bg-pixelBlack p-4 pixel-border border-pixelWhite max-w-md mx-auto mb-8">
+                            <h4 class="text-xl mb-4 text-center">Currently Listening To</h4>
+                            <div class="flex items-center justify-between mb-4">
+                                <button class="pixel-button bg-pixelRed text-pixelWhite w-10 h-10 flex items-center justify-center">
+                                    <i class="fa fa-step-backward"></i>
+                                </button>
+                                <button class="pixel-button bg-pixelRed text-pixelWhite w-16 h-16 flex items-center justify-center rounded-full">
+                                    <i class="fa fa-play text-2xl"></i>
+                                </button>
+                                <button class="pixel-button bg-pixelRed text-pixelWhite w-10 h-10 flex items-center justify-center">
+                                    <i class="fa fa-step-forward"></i>
+                                </button>
+                            </div>
+                            <div class="w-full bg-pixelWhite h-2 mb-2">
+                                <div class="bg-pixelRed h-full w-1/6"></div>
+                            </div>
+                            <p class="text-sm text-center">Plausible Theory - D&E (0:44 / 2:41)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 其他页面保持不变 -->
+        <div id="reading" class="page hidden min-h-screen p-6">
+            <!-- 返回按钮 -->
+            <button class="pixel-button bg-pixelBlack text-pixelWhite px-4 py-2 mb-8" onclick="navigateTo('hobbies')">
+                <i class="fa fa-arrow-left mr-2"></i> Back to Hobbies
+            </button>
+            
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl text-pixelBlue pixel-text mb-8 text-center">Reading</h2>
+                
+                <!-- 像素化书架背景 -->
+                <div class="relative bg-pixelWhite p-6 pixel-border mb-8">
+                    <div class="absolute inset-0 opacity-10 z-0">
+                        <div class="grid grid-cols-20 grid-rows-10 h-full">
+                            <div class="col-span-2 row-span-8 bg-pixelRed col-start-2 row-start-2"></div>
+                            <div class="col-span-2 row-span-7 bg-pixelBlue col-start-5 row-start-3"></div>
+                            <div class="col-span-2 row-span-9 bg-pixelGreen col-start-8 row-start-1"></div>
+                            <div class="col-span-2 row-span-8 bg-pixelYellow col-start-11 row-start-2"></div>
+                            <div class="col-span-2 row-span-7 bg-pixelPurple col-start-14 row-start-3"></div>
+                            <div class="col-span-2 row-span-8 bg-pixelBlack col-start-17 row-start-2"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <p class="mb-6">Reading is one of my favorite ways to relax and expand my knowledge. I enjoy various genres, from fiction to self-development books.</p>
+                        
+                        <h3 class="text-2xl mb-6 text-pixelBlue">Favorite Books</h3>
+                        
+                        <!-- 像素化书籍展示 - 修改为四本书 -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                            <!-- 书籍 1 -->
+                            <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                                <div class="w-full h-40 mb-4 bg-pixelRed flex items-center justify-center">
+                                    <div class="w-24 h-36 bg-pixelWhite p-2">
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack"></div>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg mb-1">Little Reunions</h4>
+                                <p class="text-sm mb-2">Eileen Chang</p>
+                                <p class="text-xs"> Her pen operates like a scalpel, dissecting life’s tender illusions to expose its raw, bleeding reality before my eyes.</p>
+                            </div>
+                            
+                            <!-- 书籍 2 -->
+                            <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                                <div class="w-full h-40 mb-4 bg-pixelBlue flex items-center justify-center">
+                                    <div class="w-24 h-36 bg-pixelWhite p-2">
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack"></div>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg mb-1">Run, Dad!</h4>
+                                <p class="text-sm mb-2">Kim Ae-ran</p>
+                                <p class="text-xs">This book was Ae-ran’s first smile at me—hurried but sincere, like a stranger’s unexpected kindness in a crowded street.</p>
+                            </div>
+                            
+                            <!-- 书籍 3 -->
+                            <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                                <div class="w-full h-40 mb-4 bg-pixelGreen flex items-center justify-center">
+                                    <div class="w-24 h-36 bg-pixelWhite p-2">
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack"></div>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg mb-1">Feminism from Scratch</h4>
+                                <p class="text-sm mb-2">Chizuko Ueno</p>
+                                <p class="text-xs">I have been blessed by their legacy. To honor their memory, I will keep declaring myself a feminist—now and always.</p>
+                            </div>
+                            
+                            <!-- 书籍 4 - 新增书籍 -->
+                            <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                                <div class="w-full h-40 mb-4 bg-pixelPurple flex items-center justify-center">
+                                    <div class="w-24 h-36 bg-pixelWhite p-2">
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack mb-1"></div>
+                                        <div class="w-full h-4 bg-pixelBlack"></div>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg mb-1">Pride and Prejudice</h4>
+                                <p class="text-sm mb-2">Jane Austen</p>
+                                <p class="text-xs">Her narratives forever dance half a pace ahead of the era.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 像素化阅读灯 -->
+                        <div class="flex justify-center mb-8">
+                            <div class="w-48 h-24 relative">
+                                <div class="w-4 h-20 bg-pixelBlack mx-auto"></div>
+                                <div class="w-32 h-8 bg-pixelYellow rounded-full -mt-10 mx-auto"></div>
+                                <div class="w-24 h-4 bg-pixelYellow rounded-full -mt-6 mx-auto opacity-70"></div>
+                                <div class="w-16 h-2 bg-pixelYellow rounded-full -mt-3 mx-auto opacity-50"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 读书摘记 - 保持不变 -->
+                        <div class="bg-pixelBlack bg-opacity-5 p-5 rounded-lg border-l-4 border-pixelBlue mb-6">
+                            <h4 class="text-xl mb-3">Favorite Quote</h4>
+                            <div class="flex">
+                                <i class="fa fa-quote-left text-pixelBlue text-3xl mr-4 mt-2"></i>
+                                <p>"One thing I know for certain: I will find my way through this. Those first eighteen years shaped me—and I won’t betray what they made me."</p>
+                            </div>
+                            <p class="text-right mt-2 text-sm">— Simone de Beauvoir</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="movies" class="page hidden min-h-screen p-6">
+            <!-- 返回按钮 -->
+            <button class="pixel-button bg-pixelBlack text-pixelWhite px-4 py-2 mb-8" onclick="navigateTo('hobbies')">
+                <i class="fa fa-arrow-left mr-2"></i> Back to Hobbies
+            </button>
+            
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl text-pixelGreen pixel-text mb-8 text-center">Movie Watching</h2>
+                
+                <!-- 像素化影院背景 -->
+                <div class="relative bg-pixelBlack p-6 mb-8">
+                    <div class="absolute inset-0 opacity-20">
+                        <div class="grid grid-cols-20 grid-rows-10 h-full">
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-3 row-start-7"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-5 row-start-7"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-7 row-start-7"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-9 row-start-7"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-11 row-start-7"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-13 row-start-7"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-15 row-start-7"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-17 row-start-7"></div>
+                            <!-- 第二排 -->
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-2 row-start-8"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-4 row-start-8"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-6 row-start-8"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-8 row-start-8"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-10 row-start-8"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-12 row-start-8"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-14 row-start-8"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-16 row-start-8"></div>
+                            <div class="col-span-1 row-span-1 bg-pixelWhite col-start-18 row-start-8"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative z-10 text-pixelWhite">
+                        <p class="mb-6">I love watching movies from different genres and countries. Cinema is a powerful medium that allows us to experience different worlds and perspectives.</p>
+                        
+                        <h3 class="text-2xl mb-6 text-pixelGreen">Favorite Films</h3>
+                        
+                        <!-- 像素化电影海报 -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                            <!-- 电影 1 -->
+                            <div class="pixel-card bg-pixelBlack p-4 pixel-border border-pixelWhite">
+                                <div class="w-full h-48 mb-4 bg-pixelRed flex items-center justify-center">
+                                    <div class="w-32 h-40 bg-pixelBlack p-2">
+                                        <div class="w-full h-20 bg-pixelWhite flex items-center justify-center">
+                                            <div class="w-16 h-16 bg-pixelBlack rounded-full"></div>
+                                        </div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg mb-1">Oppenheimer</h4>
+                                <p class="text-sm mb-2">Christopher Nolan, 2023</p>
+                                <p class="text-xs">The moment of explosion is soundless — just as destruction always comes to us belatedly.</p>
+                            </div>
+                            
+                            <!-- 电影 2 -->
+                            <div class="pixel-card bg-pixelBlack p-4 pixel-border border-pixelWhite">
+                                <div class="w-full h-48 mb-4 bg-pixelBlue flex items-center justify-center">
+                                    <div class="w-32 h-40 bg-pixelBlack p-2">
+                                        <div class="w-full h-20 bg-pixelYellow flex items-center justify-center">
+                                            <div class="w-20 h-10 bg-pixelBlack"></div>
+                                        </div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                        <div class="w-full h-2 bg-pixelWhite my-1"></div>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg mb-1">The Grandmaster</h4>
+                                <p class="text-sm mb-2">Kar Wai Wong, 2013</p>
+                                <p class="text-xs">Civil scenes are charged with martial tension; fight scenes thrum with civil grace. This kung fu is no fleeting martial world—it’s the eternal lamplight of ordinary souls crossing paths.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 像素化放映机 -->
+                        <div class="flex justify-center mb-8">
+                            <div class="w-64 h-24 relative">
+                                <div class="w-16 h-16 bg-pixelGray rounded-full absolute left-0"></div>
+                                <div class="w-32 h-12 bg-pixelGray absolute left-12"></div>
+                                <div class="w-4 h-4 bg-pixelBlack rounded-full absolute left-16 top-6"></div>
+                                <div class="w-24 h-1 bg-pixelWhite absolute left-40 top-10"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 像素化观影票 -->
+                        <div class="bg-pixelWhite text-pixelBlack p-4 pixel-border max-w-md mx-auto">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold">Next Watch</h4>
+                                <div class="w-12 h-12 bg-pixelGreen flex items-center justify-center rounded-full">
+                                    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/thing_cats_12.png" alt="黑猫图标" class="w-full h-full object-contain pixel-icon">
+                                </div>
+                            </div>
+                            <div class="border-t-2 border-pixelBlack my-2 pt-2">
+                                <p class="mb-1"><span class="font-bold">Title:</span> Straume</p>
+                                <p class="mb-1"><span class="font-bold">Director:</span> Gints Zilbalodis</p>
+                                <p class="mb-1"><span class="font-bold">Genre:</span> Animation/Fantasy/Adventure</p>
+                                <button class="pixel-button bg-pixelGreen text-pixelWhite px-3 py-1 text-xs mt-3">Mark as Watched</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="traveling" class="page hidden min-h-screen p-6">
+            <!-- 返回按钮 -->
+            <button class="pixel-button bg-pixelBlack text-pixelWhite px-4 py-2 mb-8" onclick="navigateTo('hobbies')">
+                <i class="fa fa-arrow-left mr-2"></i> Back to Hobbies
+            </button>
+            
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl text-pixelYellow pixel-text mb-8 text-center">Traveling</h2>
+                
+                <!-- 像素化地图背景 -->
+                <div class="relative bg-pixelWhite p-6 pixel-border mb-8">
+                    <div class="absolute inset-0 opacity-10 z-0">
+                        <div class="w-full h-full bg-pixelBlue">
+                            <div class="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-pixelGreen"></div>
+                            <div class="absolute top-1/3 left-1/3 w-4 h-4 bg-pixelRed rounded-full"></div>
+                            <div class="absolute top-1/2 left-2/3 w-4 h-4 bg-pixelRed rounded-full"></div>
+                            <div class="absolute top-2/3 left-1/2 w-4 h-4 bg-pixelRed rounded-full"></div>
+                            
+                            <div class="absolute top-1/4 left-2/3 w-4 h-4 bg-pixelRed rounded-full"></div>
+                            <div class="absolute top-3/4 left-1/4 w-4 h-4 bg-pixelRed rounded-full"></div>
+                            <!-- 连接线 -->
+                            <div class="absolute top-[25%] left-[34%] w-[32%] h-[2%] bg-pixelBlack transform rotate-[20deg]"></div>
+                            <div class="absolute top-[50%] left-[50%] w-[17%] h-[2%] bg-pixelBlack transform transform rotate-[-30deg]"></div>
+                            <div class="absolute top-[33%] left-[66%] w-[17%] h-[2%] bg-pixelBlack transform rotate-[60deg]"></div>
+                            <div class="absolute top-[75%] left-[25%] w-[25%] h-[2%] bg-pixelBlack"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <p class="mb-6">Traveling allows me to experience different cultures, meet new people, and see the beautiful diversity of our world. It's one of the best ways to broaden your perspective.</p>
+                        
+                        <h3 class="text-2xl mb-6 text-pixelYellow">Places I've Visited</h3>
+                        
+                        <!-- 旅行目的地 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <!-- 目的地 1 -->
+                            <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                                <div class="w-full h-40 mb-4 bg-pixelBlue flex items-center justify-center">
+                                    <!-- 星星和月亮图片 -->
+<div class="w-24 h-36">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/05/other_moon_01.png" 
+         alt="星星和月亮的像素图" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                                </div>
+                                <h4 class="text-lg mb-1">Aranya, Qinhuangdao</h4>
+                                <p class="text-sm mb-2">For the first time, I truly saw it—an orange moon rising from the sea, heavy and luminous, like a slow birth of fire.</p>
+                            </div>
+                            
+                            <!-- 目的地 2 -->
+                            <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                                <div class="w-full h-40 mb-4 bg-pixelBlue flex items-center justify-center">
+                                   <!-- 柿子图片 -->
+<div class="w-24 h-36">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/food_persimmon_01.png" 
+         alt="柿子的像素图" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                                </div>
+                                <h4 class="text-lg mb-1">Beijing</h4>
+                                <p class="text-sm mb-2">Beijing has slipped into late autumn, and I’ve caught the trees at their gilded peak—every branch dripping with gold.This is how seasons inscribe their passage.</p>
+                            </div>
+                            
+                            <!-- 目的地 3 -->
+                            <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                                <div class="w-full h-40 mb-4 bg-pixelBlue flex items-center justify-center">
+                                    <!-- 红辣椒图片 -->
+<div class="w-24 h-36">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/food_paprika_01.png" 
+         alt="红辣椒的像素图" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                                </div>
+                                <h4 class="text-lg mb-1">Changsha, Hunan</h4>
+                                <p class="text-sm mb-2">The city that like an owl. People love eating rice noodles at night here—it’s such a chill city.</p>
+                            </div>
+                            
+                            <!-- 目的地 4 -->
+                            <div class="pixel-card bg-pixelWhite p-4 pixel-border">
+                                <div class="w-full h-40 mb-4 bg-pixelBlue flex items-center justify-center">
+                                   <!-- 神灯图片 -->
+<div class="w-24 h-36">
+    <img src="https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/person_lamp_demon_01.png" 
+         alt="神灯的像素图" 
+         class="w-full h-full object-contain pixel-icon">
+</div>
+                                </div>
+                                <h4 class="text-lg mb-1">Shanghai</h4>
+                                <p class="text-sm mb-2">First time being a Disney princess! And damn, those pork ribs with rice cakes were so good.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 像素化行李箱 -->
+                        <div class="flex justify-center mb-8">
+                            <div class="w-40 h-24 bg-pixelRed relative">
+                                <div class="w-4 h-4 bg-pixelBlack absolute top-4 left-4"></div>
+                                <div class="w-4 h-4 bg-pixelBlack absolute top-4 right-4"></div>
+                                <div class="w-24 h-2 bg-pixelBlack absolute top-1/2 left-1/2 transform -translate-x-1/2"></div>
+                                <div class="w-2 h-6 bg-pixelBlack absolute bottom-0 left-4"></div>
+                                <div class="w-2 h-6 bg-pixelBlack absolute bottom-0 right-4"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 旅行攻略 -->
+                        <div class="bg-pixelYellow bg-opacity-20 p-5 rounded-lg border-l-4 border-pixelYellow mb-6">
+                            <h4 class="text-xl mb-3">Travel Tip</h4>
+                            <p class="mb-2">Always try the local street food! It's often the most authentic and affordable way to experience a country's cuisine.</p>
+                            <p>Learn the local etiquette - it goes a long way in connecting with people!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    <!-- JavaScript -->
+    <script>
+        // 页面导航功能
+        function navigateTo(pageId) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+                page.classList.remove('active');
+            });
+            
+            // 显示目标页面
+            const targetPage = document.getElementById(pageId);
+            targetPage.classList.remove('hidden');
+            targetPage.classList.add('active');
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+            
+            // 如果是About页面，添加雪花效果
+            if (pageId === 'about') {
+                createSnowflakes();
+            } else {
+                removeSnowflakes();
+            }
+        }
+        
+        // 创建雪花效果
+        function createSnowflakes() {
+            const snowflakesContainer = document.querySelector('.snowflakes');
+            if (!snowflakesContainer) return;
+            
+            snowflakesContainer.innerHTML = '';
+            
+            for (let i = 0; i < 30; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = '❄';
+                snowflake.style.left = `${Math.random() * 100}%`;
+                snowflake.style.top = `-${Math.random() * 20 + 10}px`;
+                snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
+                snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                snowflake.style.animationDelay = `${Math.random() * 5}s`;
+                snowflakesContainer.appendChild(snowflake);
+            }
+        }
+        
+        // 移除雪花效果
+        function removeSnowflakes() {
+            const snowflakesContainer = document.querySelector('.snowflakes');
+            if (snowflakesContainer) {
+                snowflakesContainer.innerHTML = '';
+            }
+        }
+        
+        // 创建像素化文件夹
+        function createPixelFolder(color, label, url) {
+            const folderContainer = document.createElement('div');
+            folderContainer.className = 'flex flex-col items-center m-4';
+            
+            const folderLink = document.createElement('a');
+            folderLink.href = url || '#';
+            folderLink.target = '_blank';
+            folderLink.className = 'pixel-folder';
+            folderLink.style.setProperty('--folder-color', color);
+            
+            const folderBody = document.createElement('div');
+            folderBody.className = 'folder-body';
+            
+            const folderTab = document.createElement('div');
+            folderTab.className = 'folder-tab';
+            
+            folderLink.appendChild(folderBody);
+            folderLink.appendChild(folderTab);
+            
+            const folderLabel = document.createElement('p');
+            folderLabel.className = 'text-xs mt-2 text-center max-w-[64px]';
+            folderLabel.textContent = label;
+            
+            folderContainer.appendChild(folderLink);
+            folderContainer.appendChild(folderLabel);
+            
+            return folderContainer;
+        }
+        
+        // 显示作品详情 - 文件夹风格
+        function showProjectDetails(projectId) {
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('project-details-content');
+            
+            // 清空内容
+            content.innerHTML = '';
+            
+            // 创建标题
+            const title = document.createElement('h3');
+            title.className = 'text-2xl mb-6 text-pixelRed';
+            
+            // 创建文件夹容器
+            const folderGrid = document.createElement('div');
+            folderGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8';
+            
+            // 根据项目ID填充不同内容
+            switch(projectId) {
+                case 'xiaoyuzhou-fm':
+                    title.textContent = 'Sheng-Espresso';
+                    
+                    // 添加描述
+                    const desc1 = document.createElement('p');
+                    desc1.className = 'mb-6';
+                    desc1.textContent = 'Featured podcast programs produced for Xiaoyuzhou FM platform:';
+                    content.appendChild(desc1);
+                    
+                    // 添加2个文件夹
+                    folderGrid.appendChild(createPixelFolder(
+                        '#9C27B0', // 紫色
+                        'AI Agent',
+                        'https://www.xiaoyuzhoufm.com/episode/673c757a8d1233fb0d6751b9' // 链接将在后续提供
+                    ));
+                    folderGrid.appendChild(createPixelFolder(
+                        '#9C27B0', // 紫色
+                        'Apple’s acquisition traits',
+                        'https://www.xiaoyuzhoufm.com/episode/674341988d1233fb0dabb69b' // 链接将在后续提供
+                    ));
+                    break;
+                    
+                case 'china-youth-media':
+                    title.textContent = 'China Youth Media';
+                    
+                    // 添加描述
+                    const desc2 = document.createElement('p');
+                    desc2.className = 'mb-6';
+                    desc2.textContent = 'Selected articles published on China Youth Media:';
+                    content.appendChild(desc2);
+                    
+                    // 添加4个文件夹
+                    folderGrid.appendChild(createPixelFolder(
+                        '#2196F3', // 蓝色
+                        'University Life',
+                        'https://mp.weixin.qq.com/s/hn4pF1_yU_3SaNtBSi4dqg' // 链接将在后续提供
+                    ));
+                    folderGrid.appendChild(createPixelFolder(
+                        '#2196F3', // 蓝色
+                        'Springtime',
+                        'https://mp.weixin.qq.com/s/CMmXB2ow0FA07-40xlcx3g' // 链接将在后续提供
+                    ));
+                    folderGrid.appendChild(createPixelFolder(
+                        '#2196F3', // 蓝色
+                        'Reflecting on Our College Years',
+                        'https://mp.weixin.qq.com/s/aDy1jqKMqV6LdXw2FR0WWA' // 链接将在后续提供
+                    ));
+                    folderGrid.appendChild(createPixelFolder(
+                        '#2196F3', // 蓝色
+                        'Nostalgia trap',
+                        'https://mp.weixin.qq.com/s/_thOQET6J_mlKTaZ99o23A' // 链接将在后续提供
+                    ));
+                    break;
+                    
+                case 'yangcheng-evening-news':
+                    title.textContent = 'Yangcheng Evening News';
+                    
+                    // 添加描述
+                    const desc3 = document.createElement('p');
+                    desc3.className = 'mb-6';
+                    desc3.textContent = 'Health and education reports published in Yangcheng Evening News:';
+                    content.appendChild(desc3);
+                    
+                    // 添加1个文件夹
+                    folderGrid.appendChild(createPixelFolder(
+                        '#FFA500', // 橙色
+                        'How Was Guangzhou‘s Pandemic During CNY? Experts Weigh In',
+                        'https://mp.weixin.qq.com/s/1RGN3fPqwBEqCdM5o_ws2g' // 链接将在后续提供
+                    ));
+                    break;
+            }
+            
+            // 将元素添加到内容容器
+            content.appendChild(title);
+            content.appendChild(folderGrid);
+            
+            // 显示模态框
+            modal.classList.remove('hidden');
+        }
+        
+        // 隐藏作品详情
+        function hideProjectDetails() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+        }
+        
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 确保首页显示
+            navigateTo('homepage');
+        });
+    </script>
+
+
+    
+</body></html>
